@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:todo_flutter/widgets/task_list.dart';
 
 class TasksScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          //
+        },
         backgroundColor: Colors.lightBlue,
         child: Icon(Icons.add),
       ),
@@ -50,6 +54,7 @@ class TasksScreen extends StatelessWidget {
           ),
           Expanded(
             child: Container(
+              padding: EdgeInsets.symmetric(horizontal: 20.0),
               decoration: BoxDecoration(
                 boxShadow: [
                   BoxShadow(
@@ -57,8 +62,8 @@ class TasksScreen extends StatelessWidget {
                     blurRadius: 40.0, // soften the shadow
                     spreadRadius: 15.0, //extend the shadow
                     offset: Offset(
-                      10.0, // Move to right 10  horizontally
-                      10.0, // Move to bottom 10 Vertically
+                      15.0, // Move to right 10  horizontally
+                      15.0, // Move to bottom 10 Vertically
                     ),
                   )
                 ],
@@ -68,6 +73,7 @@ class TasksScreen extends StatelessWidget {
                   topRight: Radius.circular(20.0),
                 ),
               ),
+              child: TasksLists(),
             ),
           )
         ],
