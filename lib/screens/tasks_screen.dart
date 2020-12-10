@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:todo_flutter/models/task_data.dart';
 import 'package:todo_flutter/screens/add_task_screen.dart';
 import 'package:todo_flutter/widgets/task_list.dart';
 
@@ -15,7 +17,12 @@ class TasksScreen extends StatelessWidget {
               child: Container(
                 padding: EdgeInsets.only(
                     bottom: MediaQuery.of(context).viewInsets.bottom),
-                child: AddTaskScreen(),
+                child: AddTaskScreen((newTaskTitle) {
+                  // setState(() {
+                  //   tasks.add(Task(name: newTaskTitle));
+                  // });
+                  Navigator.pop(context);
+                }),
               ),
             ),
           );
@@ -46,18 +53,21 @@ class TasksScreen extends StatelessWidget {
                   height: 10.0,
                 ),
                 Text(
-                  'Todo',
+                  'Don\'t forget',
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 50.0,
                     fontWeight: FontWeight.w700,
                   ),
                 ),
-                Text(
-                  '12 tasks',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 18.0,
+                Padding(
+                  padding: EdgeInsets.only(left: 2.0),
+                  child: Text(
+                    '${Provider.of<TaskData>(context).taskCount} tasks',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 18.0,
+                    ),
                   ),
                 ),
               ],
