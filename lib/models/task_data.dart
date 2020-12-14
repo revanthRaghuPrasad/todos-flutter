@@ -1,14 +1,35 @@
+import 'dart:collection';
 import 'package:flutter/foundation.dart';
 import 'package:todo_flutter/models/task.dart';
 
 class TaskData extends ChangeNotifier {
-  List<Task> tasks = [
+  List<Task> _tasks = [
     Task(name: 'Buy milk'),
     Task(name: 'Complete Todo-app by today'),
     Task(name: 'Sleep well'),
   ];
 
+  UnmodifiableListView<Task> get tasks {
+    return UnmodifiableListView(_tasks);
+  }
+
   int get taskCount {
-    return tasks.length;
+    return _tasks.length;
+  }
+
+  void addTask(String newTaskTitle) {
+    final task = Task(name: newTaskTitle);
+    _tasks.add(task);
+    notifyListeners();
+  }
+
+  void updateTask(Task task) {
+    task.toggleDone();
+    notifyListeners();
+  }
+
+  void deleteTask(Task task) {
+    _tasks.remove(task);
+    notifyListeners();
   }
 }

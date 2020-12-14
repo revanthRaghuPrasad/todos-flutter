@@ -17,12 +17,7 @@ class TasksScreen extends StatelessWidget {
               child: Container(
                 padding: EdgeInsets.only(
                     bottom: MediaQuery.of(context).viewInsets.bottom),
-                child: AddTaskScreen((newTaskTitle) {
-                  // setState(() {
-                  //   tasks.add(Task(name: newTaskTitle));
-                  // });
-                  Navigator.pop(context);
-                }),
+                child: AddTaskScreen(),
               ),
             ),
           );
@@ -63,7 +58,7 @@ class TasksScreen extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.only(left: 2.0),
                   child: Text(
-                    '${Provider.of<TaskData>(context).taskCount} tasks',
+                    '${Provider.of<TaskData>(context).taskCount} Tasks',
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 18.0,
